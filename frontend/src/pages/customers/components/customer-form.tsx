@@ -89,18 +89,18 @@ export function CustomerForm({
   const addEmail = () => setEmails([...emails, ''])
   const removeEmail = (index: number) =>
     setEmails(emails.filter((_, i) => i !== index))
-  const updateEmail = (index: number, valor: string) => {
+  const updateEmail = (index: number, value: string) => {
     const newEmails = [...emails]
-    newEmails[index] = valor
+    newEmails[index] = value
     setEmails(newEmails)
   }
 
   const addPhone = () => setPhones([...phones, ''])
   const removePhone = (index: number) =>
     setPhones(phones.filter((_, i) => i !== index))
-  const updatePhone = (index: number, valor: string) => {
+  const updatePhone = (index: number, value: string) => {
     const newPhones = [...phones]
-    newPhones[index] = valor
+    newPhones[index] = value
     setPhones(newPhones)
   }
 

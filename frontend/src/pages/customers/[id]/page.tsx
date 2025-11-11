@@ -7,13 +7,14 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
-const customeService = new CustomerService()
+const customerService = new CustomerService()
 
-const CustomerDetalhePage = () => {
+const CustomerDetailPage = () => {
   const { id } = useParams<{ id: string }>()
+
   const { data: customer, error } = useSWR<ICustomer>(
     id ? `/customers/${id}` : null,
-    () => customeService.get(id as string)
+    () => customerService.get(id as string)
   )
 
   if (error) {
@@ -120,4 +121,4 @@ const CustomerDetalhePage = () => {
     </div>
   )
 }
-export default CustomerDetalhePage
+export default CustomerDetailPage

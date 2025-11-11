@@ -22,9 +22,9 @@ import { Badge } from '@/components/ui/badge'
 const customerService = new CustomerService()
 
 const CustomersPage = () => {
-  const [customerParaExcluir, setCustomerParaExcluir] =
+  const [cuustomerToDelete, setCustomerToDelete] =
     useState<ICustomer | null>(null)
-  const [excluindo, setExcluindo] = useState(false)
+  const [deleting, setDeleting] = useState(false) 
 
   const {
     data: customers = [],
@@ -33,13 +33,13 @@ const CustomersPage = () => {
   } = useSWR<ICustomer[]>('/customers', () => customerService.list())
 
   const handleExcluir = async () => {
-    if (!customerParaExcluir?.id) return
+    if (!cuustomerToDelete?.id) return
 
-    setExcluindo(true)
+    setDeleting(true)
     try {
-      await customerService.delete(customerParaExcluir.id)
+      await customerService.delete(cuustomerToDelete.id)
       await mutate()
-      setCustomerParaExcluir(null)
+      setCustomerToDelete(null)
       enqueueSnackbar('Cliente excluído com sucesso!', { variant: 'success' })
     } catch (err) {
       console.error('Erro ao excluir cliente:', err)
@@ -47,7 +47,7 @@ const CustomersPage = () => {
         variant: 'error'
       })
     } finally {
-      setExcluindo(false)
+      setDeleting(false)
     }
   }
 
@@ -87,7 +87,12 @@ const CustomersPage = () => {
   return (
     <div className="space-y-6 mx-53">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Clientes</h1>
+        <div>
+          <h1 className="text-3xl font-bold">Clientes</h1>
+          <p className="text-muted-foreground">
+            Cadastre e gerencie seus clientes
+          </p>
+        </div>
         <Link to="/customers/new">
           <Button>
             <Plus className="h-4 w-4 mr-2" />
@@ -125,7 +130,7 @@ const CustomersPage = () => {
                     variant="ghost"
                     size="icon"
                     title="Excluir"
-                    onClick={() => setCustomerParaExcluir(customer)}
+                    onClick={() => setCustomerToDelete(customer)}
                   >
                     <Trash2 className="h-4 w-4 text-destructive" />
                   </Button>
@@ -159,22 +164,22 @@ const CustomersPage = () => {
       </div>
 
       <AlertDialog
-        open={!!customerParaExcluir}
-        onOpenChange={() => setCustomerParaExcluir(null)}
+        open={!!cuustomerToDelete}
+        onOpenChange={() => setCustomerToDelete(null)}
       >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Confirmar exclusão</AlertDialogTitle>
             <AlertDialogDescription>
               Tem certeza que deseja excluir o cliente{' '}
-              <strong>{customerParaExcluir?.fullName}</strong>? Esta ação não
+              <strong>{cuustomerToDelete?.fullName}</strong>? Esta ação não
               pode ser desfeita.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={excluindo}>Cancelar</AlertDialogCancel>
-            <AlertDialogAction onClick={handleExcluir} disabled={excluindo}>
-              {excluindo ? 'Excluindo...' : 'Excluir'}
+            <AlertDialogCancel disabled={deleting}>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={handleExcluir} disabled={deleting}>
+              {deleting ? 'deleting...' : 'Excluir'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -10,7 +10,7 @@ import { enqueueSnackbar } from 'notistack'
 
 const customerService = new CustomerService()
 
-const EditarCustomerPage = () => {
+const EditCustomerPage = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
@@ -85,4 +85,4 @@ const EditarCustomerPage = () => {
     </div>
   )
 }
-export default EditarCustomerPage
+export default EditCustomerPage

@@ -5,8 +5,8 @@ import DashboardPage from './pages/dashboard/page'
 import { ProtectedRoute } from './components/protected-route'
 import CustomersPage from './pages/customers/page'
 import NewCustomerPage from './pages/customers/new/page'
-import CustomerDetalhePage from './pages/customers/[id]/page'
-import EditarCustomerPage from './pages/customers/[id]/edit/page'
+import CustomerDetailPage from './pages/customers/[id]/page'
+import EditCustomerPage from './pages/customers/[id]/edit/page'
 import ContactsPage from './pages/contacts/page'
 import NewContactPage from './pages/contacts/new/page'
 import EditContactPage from './pages/contacts/[id]/edit/page'
@@ -48,7 +48,7 @@ function App() {
           path="/customers/:id"
           element={
             <ProtectedRoute>
-              <CustomerDetalhePage />
+              <CustomerDetailPage />
             </ProtectedRoute>
           }
         />
@@ -56,7 +56,7 @@ function App() {
           path="/customers/:id/edit"
           element={
             <ProtectedRoute>
-              <EditarCustomerPage />
+              <EditCustomerPage />
             </ProtectedRoute>
           }
         />
