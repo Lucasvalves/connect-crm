@@ -5,6 +5,8 @@ import DashboardPage from './pages/dashboard/page'
 import { ProtectedRoute } from './components/protected-route'
 import CustomersPage from './pages/customers/page'
 import NewCustomerPage from './pages/customers/new/page'
+import CustomerDetalhePage from './pages/customers/[id]/page'
+import EditarCustomerPage from './pages/customers/[id]/edit/page'
 
 function App() {
   return (
@@ -35,6 +37,22 @@ function App() {
           element={
             <ProtectedRoute>
               <NewCustomerPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customers/:id"
+          element={
+            <ProtectedRoute>
+              <CustomerDetalhePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customers/:id/edit"
+          element={
+            <ProtectedRoute>
+              <EditarCustomerPage />
             </ProtectedRoute>
           }
         />

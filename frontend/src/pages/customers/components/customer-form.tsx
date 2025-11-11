@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 
-// ✅ Esquema de validação Zod
 const customerSchema = z.object({
   fullName: z
     .string()
@@ -67,7 +66,7 @@ export function CustomerForm({
     const validation = customerSchema.safeParse({
       fullName,
       emails: filteredEmails,
-      phones: filteredPhones.map((p) => p.replace(/\D/g, '')) // remove caracteres não numéricos
+      phones: filteredPhones.map((p) => p.replace(/\D/g, '')) 
     })
 
     if (!validation.success) {
