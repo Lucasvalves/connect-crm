@@ -8,8 +8,12 @@ export class ContactService {
   }
 
   async create(data: IContact): Promise<IContact> {
-    console.log('🚀 ~ ContactService ~ create ~ data:', data)
     const response = await api.post('/contacts', data)
+    return response.data
+  }
+
+  async get(id: string): Promise<IContact> {
+    const response = await api.get(`/contacts/${id}`)
     return response.data
   }
 

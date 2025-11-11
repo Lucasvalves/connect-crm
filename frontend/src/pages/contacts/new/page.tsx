@@ -5,7 +5,7 @@ import { enqueueSnackbar } from 'notistack'
 import { Link, useNavigate } from 'react-router-dom'
 import { ContactForm } from '../components/contact-form'
 import { ContactService } from '../../../services/ContactService'
-import type { ContactFormData } from '../../../interfaces'
+import type { IContact } from '../../../interfaces'
 
 const contacService = new ContactService()
 
@@ -13,7 +13,7 @@ const NewContactPage = ()=> {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (data: ContactFormData) => {
+  const handleSubmit = async (data: IContact) => {
     setIsLoading(true)
     try {
       await contacService.create(data)

@@ -9,6 +9,8 @@ import CustomerDetalhePage from './pages/customers/[id]/page'
 import EditarCustomerPage from './pages/customers/[id]/edit/page'
 import ContactsPage from './pages/contacts/page'
 import NewContactPage from './pages/contacts/new/page'
+import EditContactPage from './pages/contacts/[id]/edit/page'
+import ContactDetailPage from './pages/contacts/[id]/page'
 
 function App() {
   return (
@@ -71,6 +73,22 @@ function App() {
           element={
             <ProtectedRoute>
               <NewContactPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contacts/:id"
+          element={
+            <ProtectedRoute>
+              <ContactDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contacts/:id/edit"
+          element={
+            <ProtectedRoute>
+              <EditContactPage />
             </ProtectedRoute>
           }
         />

@@ -14,7 +14,7 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { CustomerService } from '@/services/CustomerService'
-import type { ContactFormData, ICustomer } from '@/interfaces'
+import type { IContact, ICustomer } from '@/interfaces'
 
 const contactSchema = z.object({
   customerId: z.string().min(1, 'Selecione um cliente'),
@@ -43,8 +43,8 @@ const contactSchema = z.object({
 const customerService = new CustomerService()
 
 interface ContactFormProps {
-  initialData?: ContactFormData & { id?: number }
-  onSubmit: (data: ContactFormData) => Promise<void>
+  initialData?: IContact 
+  onSubmit: (data: IContact) => Promise<void>
   onCancel: () => void
   isLoading?: boolean
 }
