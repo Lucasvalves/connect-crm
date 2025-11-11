@@ -4,6 +4,7 @@ import AuthenticationPage from './pages/authentication/page'
 import DashboardPage from './pages/dashboard/page'
 import { ProtectedRoute } from './components/protected-route'
 import CustomersPage from './pages/customers/page'
+import NewCustomerPage from './pages/customers/new/page'
 
 function App() {
   return (
@@ -25,6 +26,15 @@ function App() {
           element={
             <ProtectedRoute>
               <CustomersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/customers/new"
+          element={
+            <ProtectedRoute>
+              <NewCustomerPage />
             </ProtectedRoute>
           }
         />

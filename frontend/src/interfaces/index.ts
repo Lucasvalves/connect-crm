@@ -11,3 +11,9 @@ export interface ICustomer {
   phones: { id?: string; phone: string }[]
   createdAt?: string
 }
+export interface ICustomerFormData {
+  id?: string
+  fullName: string
+  emails: { id?: string; email: string }[]
+  phones: { id?: string; phone: string }[]
+}
