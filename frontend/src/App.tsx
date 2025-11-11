@@ -3,6 +3,7 @@ import { SnackbarProvider } from 'notistack'
 import AuthenticationPage from './pages/authentication/page'
 import DashboardPage from './pages/dashboard/page'
 import { ProtectedRoute } from './components/protected-route'
+import CustomersPage from './pages/customers/page'
 
 function App() {
   return (
@@ -16,6 +17,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <ProtectedRoute>
+              <CustomersPage />
             </ProtectedRoute>
           }
         />
