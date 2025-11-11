@@ -4,3 +4,10 @@ export interface IUser {
   email: string
   password?: string
 }
+export interface ICustomer {
+  id?: string
+  fullName: string
+  emails: { id?: string; email: string }[]
+  phones: { id?: string; phone: string }[]
+  createdAt?: string
+}
