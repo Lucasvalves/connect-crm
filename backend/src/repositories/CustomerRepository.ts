@@ -20,16 +20,17 @@ export class CustomerRepository {
   }
 
   async create({ fullName, emails, phones }: ICreate) {
-    const result = await prisma.customer.create({
+    const result = prisma.customer.create({
       data: {
         fullName,
-        emails: { create: emails.map((email: string) => ({ email })) },
-        phones: { create: phones.map((phone: string) => ({ phone })) }
+        emails: { create: emails },
+        phones: { create: phones }
       },
       include: { emails: true, phones: true, contacts: true }
     })
     return result
   }
+
   async update({ id, fullName, emails, phones }: IUpdate) {
     await prisma.customer.update({ where: { id }, data: { fullName } })
 
