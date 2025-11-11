@@ -10,6 +10,7 @@ export interface ICustomer {
   emails: { id?: string; email: string }[]
   phones: { id?: string; phone: string }[]
   createdAt?: string
+  contacts?: IContact[]
 }
 export interface ICustomerFormData {
   id?: string
@@ -24,4 +25,3 @@ export interface IContact {
   phones: { id?: string; phone: string }[]
   customerId: string
 }
-

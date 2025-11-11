@@ -11,6 +11,7 @@ import ContactsPage from './pages/contacts/page'
 import NewContactPage from './pages/contacts/new/page'
 import EditContactPage from './pages/contacts/[id]/edit/page'
 import ContactDetailPage from './pages/contacts/[id]/page'
+import ReportsPage from './pages/report/page'
 
 function App() {
   return (
@@ -89,6 +90,14 @@ function App() {
           element={
             <ProtectedRoute>
               <EditContactPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/report/"
+          element={
+            <ProtectedRoute>
+              <ReportsPage />
             </ProtectedRoute>
           }
         />
