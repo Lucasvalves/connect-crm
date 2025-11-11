@@ -13,6 +13,14 @@ export class ContactService {
     return result
   }
 
+  async getContact(id: string) {
+    const result = await this.contactRepository.findById(id)
+
+    if (!result) throw new Error('Contact not found')
+
+    return result
+  }
+
   async createContact({ fullName, customerId, emails, phones }: ICreate) {
     const result = this.contactRepository.create({
       fullName,

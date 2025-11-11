@@ -33,6 +33,17 @@ export class ContactController {
     }
   }
 
+  async get(req: Request, res: Response, next: NextFunction): Promise<void> {
+    const { id } = req.params
+
+    try {
+      const contact = await this.contactService.getContact(id)
+      res.status(200).json(contact)
+    } catch (error) {
+      next(error) 
+    }
+  }
+
   async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     const { fullName, customerId, emails, phones } = req.body
     const { id } = req.params

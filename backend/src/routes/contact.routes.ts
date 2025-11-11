@@ -24,6 +24,11 @@ export class ContactRoutes {
       this.authMiddleware.handle.bind(this.authMiddleware),
       this.contactController.list.bind(this.contactController)
     )
+    this.router.get(
+      '/:id',
+      this.authMiddleware.handle.bind(this.authMiddleware),
+      this.contactController.get.bind(this.contactController)
+    )
     this.router.put(
       '/:id',
       this.authMiddleware.handle.bind(this.authMiddleware),
