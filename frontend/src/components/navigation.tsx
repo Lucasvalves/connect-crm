@@ -36,14 +36,15 @@ export function Navigation() {
   }
 
   return (
-    <nav className="border-b border-border bg-card mb-10">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-8">
-            <h2 className="text-xl font-semibold text-foreground">
+    <nav className="border-b border-border bg-card mb-10 ">
+      <div className="container mx-auto px-4 ">
+        <div className="flex flex-wrap items-center justify-between h-auto min-h-16 gap-4 py-3">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground truncate max-w-[200px] sm:max-w-none">
               Client Contact Manager
             </h2>
-            <div className="flex gap-1">
+
+            <div className="flex flex-wrap gap-1 sm:gap-2">
               {navItems.map((item) => {
                 const Icon = item.icon
                 const isActive =
@@ -55,14 +56,14 @@ export function Navigation() {
                     key={item.href}
                     to={item.href}
                     className={cn(
-                      'flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors',
+                      'flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                       isActive
                         ? 'bg-primary text-primary-foreground'
                         : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                     )}
                   >
                     <Icon className="h-4 w-4" />
-                    {item.label}
+                    <span className="hidden sm:inline">{item.label}</span>
                   </Link>
                 )
               })}
@@ -74,7 +75,7 @@ export function Navigation() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="relative h-10 w-10 rounded-full"
+                  className="relative h-10 w-10 rounded-full shrink-0"
                 >
                   <Avatar>
                     <AvatarFallback>{getInitials(user.email)}</AvatarFallback>
@@ -84,10 +85,10 @@ export function Navigation() {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium">
+                    <p className="text-sm font-medium truncate max-w-[150px]">
                       {user.email.split('@')[0]}
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground truncate max-w-[180px]">
                       {user.email}
                     </p>
                   </div>

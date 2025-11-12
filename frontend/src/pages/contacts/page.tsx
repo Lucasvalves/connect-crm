@@ -76,7 +76,7 @@ const ContactsPage = () => {
 
   if (!contacts.length) {
     return (
-      <div className="space-y-6 mx-53">
+      <div className="space-y-6 m-auto container px-4">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold">Contatos</h1>
@@ -108,7 +108,7 @@ const ContactsPage = () => {
     )
   }
   return (
-    <div className="space-y-6 mx-53">
+    <div className="space-y-6 m-auto container px-4">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Contatos</h1>

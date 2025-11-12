@@ -22,9 +22,10 @@ import { Badge } from '@/components/ui/badge'
 const customerService = new CustomerService()
 
 const CustomersPage = () => {
-  const [cuustomerToDelete, setCustomerToDelete] =
-    useState<ICustomer | null>(null)
-  const [deleting, setDeleting] = useState(false) 
+  const [cuustomerToDelete, setCustomerToDelete] = useState<ICustomer | null>(
+    null
+  )
+  const [deleting, setDeleting] = useState(false)
 
   const {
     data: customers = [],
@@ -57,7 +58,7 @@ const CustomersPage = () => {
 
   if (!customers.length) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 m-auto container px-4">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">Clientes</h1>
           <Link to="/customers/new">
@@ -85,7 +86,7 @@ const CustomersPage = () => {
   }
 
   return (
-    <div className="space-y-6 mx-53">
+    <div className="space-y-6 m-auto container px-4">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Clientes</h1>
@@ -172,8 +173,8 @@ const CustomersPage = () => {
             <AlertDialogTitle>Confirmar exclusão</AlertDialogTitle>
             <AlertDialogDescription>
               Tem certeza que deseja excluir o cliente{' '}
-              <strong>{cuustomerToDelete?.fullName}</strong>? Esta ação não
-              pode ser desfeita.
+              <strong>{cuustomerToDelete?.fullName}</strong>? Esta ação não pode
+              ser desfeita.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
