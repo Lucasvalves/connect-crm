@@ -1,19 +1,19 @@
 # ConnectCRM
 
-Sistema completo de gerenciamento de clientes e contatos, desenvolvido com Node.js, React e TypeScript, aplicando arquitetura em camadas e boas práticas de desenvolvimento.
-O projeto tem como objetivo demonstrar a capacidade de implementação de um CRUD completo com autenticação, associação entre entidades e geração de relatórios.
+A complete customer and contact management system built with Node.js, React, and TypeScript, applying layered architecture and development best practices.
+The project aims to demonstrate the ability to implement a full CRUD with authentication, entity associations, and report generation.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 ### Backend
 
 - **Node.js** + **Express**
 - **TypeScript**
 - **Prisma ORM**
-- **SQLite (banco local)**
-- **JWT (autenticação)**
-- **bcrypt (criptografia)**
-- **CORS (controle de acesso)**
+- **SQLite (local database)**
+- **JWT (authentication)**
+- **bcrypt (encryption)**
+- **CORS (access control)**
 
 ### Frontend
 
@@ -21,12 +21,12 @@ O projeto tem como objetivo demonstrar a capacidade de implementação de um CRU
 - **TypeScript**
 - **React Router DOM**
 - **TailwindCSS + shadcn/ui**
-- **React Hook Form + Zod (validação)**
+- **React Hook Form + Zod (validation)**
 - **Axios + SWR**
-- **jsPDF (relatórios em PDF)**
-- **Notistack (notificações)**
+- **jsPDF (PDF reports)**
+- **Notistack (notifications)**
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 connect-crm/
@@ -54,155 +54,155 @@ connect-crm/
         └── interfaces/
 ```
 
-## Modelo de Dados
+## Data Model
 
-O sistema utiliza os seguintes modelos principais:
+The system uses the following main models:
 
-- **User**: Usuários do sistema (autenticação)
-- **Customer**: Clientes cadastrados
-- **CustomerEmail**: E-mails dos clientes (relação 1:N)
-- **CustomerPhone**: Telefones dos clientes (relação 1:N)
-- **Contact**: Contatos vinculados aos clientes
-- **ContactEmail**: E-mails dos contatos (relação 1:N)
-- **ContactPhone**: Telefones dos contatos (relação 1:N)
+- **User**: System users (authentication)
+- **Customer**: Registered customers
+- **CustomerEmail**: Customer emails (1:N relationship)
+- **CustomerPhone**: Customer phones (1:N relationship)
+- **Contact**: Contacts linked to customers
+- **ContactEmail**: Contact emails (1:N relationship)
+- **ContactPhone**: Contact phones (1:N relationship)
 
-## Pré-requisitos
+## Prerequisites
 
-- **Node.js versão 18+**
-- **npm** ou **yarn**
+- **Node.js version 18+**
+- **npm** or **yarn**
 - **Git**
 
-## Instalação e Configuração
+## Installation and Setup
 
-### 1. Clone o repositório:
+### 1. Clone the repository:
 
 ```bash
 git clone git@github.com:Lucasvalves/connect-crm.git
 cd connect-crm
 ```
 
-### 2. Configuração do Backend
+### 2. Backend Setup
 
 ```bash
 cd backend
 npm install
 ```
 
-Crie um arquivo `.env`:
+Create a `.env` file:
 
 ```env
 DATABASE_URL="file:./prisma/dev.db"
-JWT_SECRET="seu-secret-jwt-aqui"
+JWT_SECRET="your-jwt-secret-here"
 PORT=3333
 ```
 
-Execute as migrações do Prisma:
+Run Prisma migrations:
 
 ```bash
 npx prisma migrate dev
 ```
 
-Inicie o servidor:
+Start the server:
 
 ```bash
 npm run dev
 ```
 
-Servidor ficará disponível em `http://localhost:3333`
+The server will be available at `http://localhost:3333`
 
-### 3. Configuração do Frontend
+### 3. Frontend Setup
 
 ```bash
 cd ../frontend
 npm install
 ```
 
-Crie o arquivo .env:
+Create the `.env` file:
 
 ```env
 VITE_API_URL=http://localhost:3333
 ```
 
-Execute o frontend:
+Run the frontend:
 
 ```bash
 npm run dev
 ```
 
-A aplicação estará acessível em `http://localhost:5173`.
+The application will be accessible at `http://localhost:5173`.
 
-## Funcionalidades
+## Features
 
-### Autenticação
+### Authentication
 
-- Registro e login de usuários
-- Geração e validação de token JWT
-- Proteção de rotas autenticadas
+- User registration and login
+- JWT token generation and validation
+- Protected authenticated routes
 
-### Clientes
+### Customers
 
-- CRUD completo de clientes
-- Múltiplos e-mails e telefones por cliente
-- Associação com contatos
+- Full customer CRUD
+- Multiple emails and phones per customer
+- Association with contacts
 
-### Contatos
+### Contacts
 
-- CRUD completo de contatos
-- Vínculo direto com o cliente associado
-- Múltiplos e-mails e telefones por contato
+- Full contact CRUD
+- Direct link to the associated customer
+- Multiple emails and phones per contact
 
-### Relatórios
+### Reports
 
-- Listagem consolidada de clientes e seus contatos
-- Geração de relatórios em PDF
+- Consolidated listing of customers and their contacts
+- PDF report generation
 
-## Endpoints da API
+## API Endpoints
 
-### Autenticação
-
-```
-POST   /auth/register    -> Registrar novo usuário
-POST   /auth/login       -> Fazer login
-```
-
-### Clientes
+### Authentication
 
 ```
-GET    /customers        -> Listar todos os clientes
-GET    /customers/:id    -> Obter cliente específico
-POST   /customers        -> Criar novo cliente
-PUT    /customers/:id    -> Atualizar cliente
-DELETE /customers/:id    -> Deletar cliente
+POST   /auth/register    -> Register new user
+POST   /auth/login       -> Log in
 ```
 
-### Contatos
+### Customers
 
 ```
-GET    /contacts         -> Listar todos os contatos
-GET    /contacts/:id     -> Obter contato específico
-POST   /contacts         -> Criar novo contato vinculado a cliente
-PUT    /contacts/:id     -> Atualizar contato
-DELETE /contacts/:id     -> Deletar contato
+GET    /customers        -> List all customers
+GET    /customers/:id    -> Get specific customer
+POST   /customers        -> Create new customer
+PUT    /customers/:id    -> Update customer
+DELETE /customers/:id    -> Delete customer
 ```
 
-**Observação:** As rotas de clientes e contatos exigem autenticação via JWT no header: `Authorization: Bearer <token>`
+### Contacts
 
-## Arquitetura
+```
+GET    /contacts         -> List all contacts
+GET    /contacts/:id     -> Get specific contact
+POST   /contacts         -> Create new contact linked to customer
+PUT    /contacts/:id     -> Update contact
+DELETE /contacts/:id     -> Delete contact
+```
 
-O projeto segue uma arquitetura em camadas:
+**Note:** Customer and contact routes require JWT authentication in the header: `Authorization: Bearer <token>`
+
+## Architecture
+
+The project follows a layered architecture:
 
 ### Backend
 
-- **Controllers**: Recebem requisições HTTP e delegam para services
-- **Services**: Contêm a lógica de negócio
-- **Repositories**: Abstraem o acesso ao banco de dados
-- **Routes**: Definem os endpoints da API
-- **Middleware**: Interceptam requisições (autenticação, validação)
+- **Controllers**: Receive HTTP requests and delegate to services
+- **Services**: Contain business logic
+- **Repositories**: Abstract database access
+- **Routes**: Define API endpoints
+- **Middleware**: Intercept requests (authentication, validation)
 
 ### Frontend
 
-- **Pages**: Páginas principais da aplicação
-- **Components**: Componentes reutilizáveis
-- **Services**: Comunicação com a API
-- **Contexts**: Gerenciamento de estado global (Auth)
-- **Hooks**: Lógica reutilizável
+- **Pages**: Main application pages
+- **Components**: Reusable components
+- **Services**: API communication
+- **Contexts**: Global state management (Auth)
+- **Hooks**: Reusable logic
